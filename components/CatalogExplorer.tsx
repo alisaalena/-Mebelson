@@ -51,8 +51,8 @@ const CatalogExplorer: React.FC<CatalogExplorerProps> = ({ activeYear, onOpenCat
     : allCatalogs.filter(c => c.year === activeYear);
 
   return (
-    <section id="catalogs" className="pb-24 min-h-[400px] scroll-mt-32">
-      <div className="container mx-auto px-4">
+    <div className="pb-24 min-h-[400px]">
+      <div className="container mx-auto">
         {filteredCatalogs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredCatalogs.map(catalog => (
@@ -114,7 +114,7 @@ const CatalogExplorer: React.FC<CatalogExplorerProps> = ({ activeYear, onOpenCat
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -5,12 +5,12 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white border-b border-mebelson-border sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 flex items-center justify-between h-[80px] md:h-[100px]">
-        {/* БЛОК ЛОГОТИПА */}
+        {/* БЛОК ЛОГОТИПА - удалена текстовая часть Mebelson */}
         <div className="flex items-center">
-          <a href="/" className="flex items-center space-x-3 group">
+          <a href="#" className="flex items-center group">
             <div className="flex-shrink-0 flex items-center">
               <img 
-                src="https://mebelson.ru/include/sotbit_origami/images/logo.svg" 
+                src="https://xn--80adxhks.xn--90ahbybkgx2h.xn--p1ai/upload/sotbit_b2c/3a4/vmje78cvczxsdjqh0ktvqtr4z12a3kua/Logotip-Mebelson-gorizont.png" 
                 alt="Logo" 
                 className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
                 onError={(e) => {
@@ -18,9 +18,6 @@ const Navbar: React.FC = () => {
                 }}
               />
             </div>
-            <span className="text-mebelson-dark font-[900] text-2xl md:text-3xl tracking-tighter uppercase">
-              Mebelson
-            </span>
           </a>
         </div>
         

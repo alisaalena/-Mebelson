@@ -30,7 +30,7 @@ const AIConsultant: React.FC = () => {
   };
 
   return (
-    <section id="ai" className="py-24 bg-[#FBFBFB] scroll-mt-24">
+    <section className="py-24 bg-[#FBFBFB]">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
           

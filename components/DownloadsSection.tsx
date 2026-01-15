@@ -22,7 +22,7 @@ const DownloadsSection: React.FC = () => {
     : materials.filter(m => m.cat === activeTab);
 
   return (
-    <section id="materials" className="py-24 bg-white scroll-mt-24">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">

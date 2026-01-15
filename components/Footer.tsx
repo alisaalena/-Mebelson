@@ -7,13 +7,12 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
+            <div className="flex items-center mb-6">
                <img 
                  src="https://mebelson.ru/include/sotbit_origami/images/logo.svg" 
                  alt="Mebelson" 
                  className="h-8 w-auto grayscale opacity-70" 
                />
-               <span className="text-xl font-black text-mebelson-dark tracking-tighter">MEBELSON</span>
             </div>
             <p className="max-w-sm mb-8 leading-relaxed text-sm">
               Мебельная фабрика Mebelson — это современное производство корпусной мебели с 15-летней историей. Мы создаем пространство для жизни.
@@ -35,7 +34,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm font-medium">
               <li><a href="https://mebelson.ru/" target="_blank" rel="noopener noreferrer" className="hover:text-mebelson-red transition-colors">Основной сайт</a></li>
               <li><a href="#catalogs" className="hover:text-mebelson-red transition-colors">Каталоги мебели</a></li>
-              <li><a href="#downloads" className="hover:text-mebelson-red transition-colors">База материалов</a></li>
+              <li><a href="#materials" className="hover:text-mebelson-red transition-colors">База материалов</a></li>
               <li><a href="#ai" className="hover:text-mebelson-red transition-colors">AI-Помощник</a></li>
             </ul>
           </div>
