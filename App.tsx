@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CatalogExplorer from './components/CatalogExplorer';
@@ -11,6 +11,11 @@ import FlipbookDemo from './components/FlipbookDemo';
 const App: React.FC = () => {
   const [activeYear, setActiveYear] = useState<'Все' | '2025' | '2024'>('Все');
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const openCatalog = () => {
     setIsFlipbookOpen(true);
@@ -22,25 +27,26 @@ const App: React.FC = () => {
     document.body.style.overflow = 'auto';
   };
 
+  if (!isLoaded) return null;
+
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans transition-opacity duration-1000">
       <Navbar />
       
       <main className="flex-grow">
         <Hero />
 
-        {/* Секция каталогов. scroll-mt-[100px] компенсирует липкий Navbar высотой 100px */}
         <div id="catalogs" className="scroll-mt-[100px]">
           <section className="container mx-auto px-4 pt-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-100 pb-8">
-              <div>
+              <div className="animate-in fade-in slide-in-from-left-4 duration-700">
                  <h2 className="text-3xl md:text-5xl font-black text-mebelson-dark uppercase tracking-tighter leading-none mb-4">
                    Каталоги <br/><span className="text-mebelson-red">Продукции</span>
                  </h2>
                  <p className="text-gray-400 font-medium text-sm">Выберите год выпуска для фильтрации ассортимента</p>
               </div>
               
-              <div className="flex bg-gray-100 rounded-2xl p-1.5 shadow-inner">
+              <div className="flex bg-gray-100 rounded-2xl p-1.5 shadow-inner animate-in fade-in slide-in-from-right-4 duration-700">
                 {(['Все', '2025', '2024'] as const).map((year) => (
                   <button 
                     key={year}
