@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import CatalogExplorer from './components/CatalogExplorer';
 import DownloadsSection from './components/DownloadsSection';
 import AIConsultant from './components/AIConsultant';
@@ -26,29 +27,29 @@ const App: React.FC = () => {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Header Content */}
-        <div className="container mx-auto px-4 pt-12">
-          <nav className="text-[13px] text-gray-400 mb-8 flex items-center space-x-2">
-            <a href="/" className="hover:text-mebelson-red transition-colors">Главная</a>
-            <span>/</span>
-            <span className="text-mebelson-dark">Электронные каталоги</span>
-          </nav>
-          
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-mebelson-dark">
-              Электронные каталоги и буклеты
-            </h1>
+        {/* Главный баннер */}
+        <Hero />
+
+        {/* Раздел Каталогов */}
+        <div id="catalogs" className="container mx-auto px-4 pt-24 scroll-mt-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-100 pb-8">
+            <div>
+               <h2 className="text-3xl md:text-5xl font-black text-mebelson-dark uppercase tracking-tighter leading-none mb-4">
+                 Каталоги <br/><span className="text-mebelson-red">Продукции</span>
+               </h2>
+               <p className="text-gray-400 font-medium text-sm">Выберите год выпуска для фильтрации ассортимента</p>
+            </div>
             
-            {/* Year Filters */}
-            <div className="flex bg-white border border-mebelson-border rounded-lg p-1 shadow-sm">
+            {/* Года (Закладки) */}
+            <div className="flex bg-gray-100 rounded-2xl p-1.5 shadow-inner">
               {(['Все', '2025', '2024'] as const).map((year) => (
                 <button 
                   key={year}
                   onClick={() => setActiveYear(year)}
-                  className={`px-6 py-2 rounded-md font-bold text-sm transition-all ${
+                  className={`px-8 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest transition-all ${
                     activeYear === year 
-                      ? 'bg-[#FFF0F0] text-mebelson-red' 
-                      : 'hover:bg-mebelson-light text-mebelson-dark'
+                      ? 'bg-white text-mebelson-red shadow-md' 
+                      : 'text-gray-400 hover:text-mebelson-dark'
                   }`}
                 >
                   {year}
@@ -56,12 +57,10 @@ const App: React.FC = () => {
               ))}
             </div>
           </div>
+          <CatalogExplorer activeYear={activeYear} onOpenCatalog={openCatalog} />
         </div>
-
-        {/* Раздел Каталогов */}
-        <CatalogExplorer activeYear={activeYear} onOpenCatalog={openCatalog} />
         
-        {/* Раздел Материалов */}
+        {/* Раздел Материалов с закладками */}
         <DownloadsSection />
         
         {/* AI Помощник */}
@@ -70,21 +69,23 @@ const App: React.FC = () => {
 
       {/* 3D Catalog Modal */}
       {isFlipbookOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-300">
           <button 
             onClick={closeCatalog}
-            className="absolute top-6 right-6 text-white hover:text-mebelson-red transition-colors z-[110]"
+            className="absolute top-6 right-6 text-white hover:text-mebelson-red transition-colors z-[110] bg-white/10 p-2 rounded-full backdrop-blur-xl"
           >
-            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div className="w-full max-w-5xl bg-white rounded-2xl p-8 md:p-12 overflow-hidden shadow-2xl relative">
+          <div className="w-full max-w-6xl bg-white rounded-[2.5rem] p-8 md:p-12 overflow-hidden shadow-2xl relative transform animate-in zoom-in-95 duration-500">
             <div className="mb-8 text-center">
-              <h2 className="text-2xl font-bold text-mebelson-dark">Интерактивный просмотр каталога</h2>
-              <p className="text-gray-500 text-sm">Используйте стрелки для перелистывания страниц</p>
+              <h2 className="text-2xl font-black text-mebelson-dark uppercase tracking-tight">Интерактивный ридер</h2>
+              <p className="text-gray-400 font-bold text-[10px] uppercase tracking-[0.2em] mt-1">Используйте стрелки для перелистывания</p>
             </div>
-            <FlipbookDemo />
+            <div className="h-[60vh] md:h-[70vh]">
+              <FlipbookDemo />
+            </div>
           </div>
         </div>
       )}

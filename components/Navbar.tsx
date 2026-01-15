@@ -24,21 +24,24 @@ const Navbar: React.FC = () => {
           </a>
         </div>
         
-        {/* Меню навигации - ПЛАНИРОВЩИК УДАЛЕН */}
-        <div className="hidden lg:flex items-center space-x-8 font-semibold text-[14px] uppercase tracking-wider">
+        {/* Меню навигации */}
+        <div className="hidden lg:flex items-center space-x-8 font-black text-[11px] uppercase tracking-[0.15em]">
           <a href="https://mebelson.ru/" target="_blank" rel="noopener noreferrer" className="hover:text-mebelson-red transition-colors text-mebelson-dark">Сайт</a>
           <a href="#catalogs" className="hover:text-mebelson-red transition-colors text-mebelson-dark">Каталоги</a>
-          <a href="#downloads" className="hover:text-mebelson-red transition-colors text-mebelson-dark">Материалы</a>
+          <a href="#materials" className="hover:text-mebelson-red transition-colors text-mebelson-dark">Материалы</a>
           <a href="#ai" className="hover:text-mebelson-red transition-colors text-mebelson-dark">AI-Помощник</a>
         </div>
 
-        {/* Поиск */}
-        <div className="flex items-center">
+        {/* Поиск / Личный кабинет */}
+        <div className="flex items-center space-x-4">
           <button className="text-mebelson-dark hover:text-mebelson-red p-2 transition-colors">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
+          <a href="https://mebelson.ru/personal/" target="_blank" className="hidden sm:block px-6 py-3 bg-mebelson-dark text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-mebelson-red transition-all">
+            Вход для партнеров
+          </a>
         </div>
       </div>
     </nav>
