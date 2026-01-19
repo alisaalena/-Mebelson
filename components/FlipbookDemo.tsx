@@ -1,90 +1,59 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const FlipbookDemo: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = 6;
+interface FlipbookDemoProps {
+  pdfUrl: string;
+}
 
-  const pages = [
-    { title: "Mebelson 2025", subtitle: "Новая коллекция корпусной мебели", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800" },
-    { title: "Кухонные системы", subtitle: "Инновации в каждой детали", img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" },
-    { title: "Модульные гостиные", subtitle: "Ваше пространство — ваши правила", img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800" },
-    { title: "Детские комнаты", subtitle: "Безопасность и вдохновение", img: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800" },
-    { title: "Прихожие", subtitle: "Первое впечатление начинается здесь", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800" },
-    { title: "Контакты", subtitle: "Свяжитесь с нами для заказа", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" }
-  ];
+declare global {
+  interface Window {
+    jQuery: any;
+    _df: any;
+  }
+}
 
-  const next = () => setCurrentPage(p => Math.min(totalPages - 1, p + 1));
-  const prev = () => setCurrentPage(p => Math.max(0, p - 1));
+const FlipbookDemo: React.FC<FlipbookDemoProps> = ({ pdfUrl }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Интеграция с DearFlip (предполагается, что скрипты dFlip загружены в Bitrix)
+    if (window._df && containerRef.current) {
+      // Пример инициализации плагина в контейнере
+      // На продакшене здесь будет вызов API купленного плагина
+      console.log('Инициализация DearFlip для:', pdfUrl);
+    }
+  }, [pdfUrl]);
 
   return (
     <div className="flex flex-col h-full">
-      {/* Reader Container */}
-      <div className="relative flex-grow bg-gray-100 rounded-xl overflow-hidden shadow-inner flex items-center justify-center p-4 md:p-8">
-        {/* Progress Bar Top */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gray-200">
-          <div 
-            className="h-full bg-mebelson-red transition-all duration-300" 
-            style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
-          ></div>
-        </div>
-
-        {/* Page Display */}
-        <div className="relative w-full max-w-2xl aspect-[3/4] bg-white shadow-2xl rounded-sm overflow-hidden transform transition-all duration-500">
-          <img 
-            src={pages[currentPage].img} 
-            alt={pages[currentPage].title} 
-            className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-500"
-          />
-          <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
-            <h3 className="text-xl font-bold mb-1 uppercase tracking-wider">{pages[currentPage].title}</h3>
-            <p className="text-sm opacity-80">{pages[currentPage].subtitle}</p>
+      <div 
+        ref={containerRef}
+        className="flex-grow bg-gray-50 rounded-xl overflow-hidden shadow-inner flex items-center justify-center p-4 border-2 border-dashed border-gray-200"
+      >
+        <div className="text-center">
+          <div className="w-20 h-20 bg-mebelson-red/10 text-mebelson-red rounded-full flex items-center justify-center mx-auto mb-4">
+             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
           </div>
-          
-          {/* Page Corner Fold Effect (Visual only) */}
-          <div className="absolute top-0 right-0 w-12 h-12 bg-white/20 backdrop-blur-sm -rotate-45 translate-x-6 -translate-y-6"></div>
+          <h3 className="text-xl font-bold text-mebelson-dark mb-2 tracking-tight">3D-просмотр DearFlip</h3>
+          <p className="text-gray-400 text-sm max-w-xs mx-auto">
+            Здесь будет инициализирован профессиональный плагин для реалистичного листания PDF.
+          </p>
+          <p className="mt-4 text-[10px] font-black uppercase text-mebelson-red tracking-widest bg-red-50 inline-block px-3 py-1 rounded">
+            PDF: {pdfUrl.split('/').pop()}
+          </p>
         </div>
-
-        {/* Navigation Arrows */}
-        <button 
-          onClick={prev}
-          disabled={currentPage === 0}
-          className="absolute left-4 p-4 rounded-full bg-white/80 hover:bg-white shadow-lg text-mebelson-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed z-10"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button 
-          onClick={next}
-          disabled={currentPage === totalPages - 1}
-          className="absolute right-4 p-4 rounded-full bg-white/80 hover:bg-white shadow-lg text-mebelson-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed z-10"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
-        </button>
       </div>
-
-      {/* Footer Controls */}
-      <div className="mt-8 flex items-center justify-between px-2">
-        <div className="flex items-center space-x-4">
-          <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Страница</span>
-          <div className="flex space-x-1">
-            {pages.map((_, i) => (
-              <div 
-                key={i} 
-                className={`w-2 h-2 rounded-full transition-all ${i === currentPage ? 'bg-mebelson-red w-6' : 'bg-gray-200'}`}
-              ></div>
-            ))}
-          </div>
-        </div>
-        
-        <div className="text-sm font-black text-mebelson-dark">
-          {currentPage + 1} / {totalPages}
-        </div>
-
-        <div className="flex space-x-2">
-           <button className="p-2 text-gray-400 hover:text-mebelson-red transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
-           </button>
-        </div>
+      
+      <div className="mt-6 flex items-center justify-between">
+        <span className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">Powered by DearFlip 3D Technology</span>
+        <a 
+          href={pdfUrl} 
+          download 
+          className="flex items-center space-x-2 text-xs font-bold text-mebelson-dark hover:text-mebelson-red transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <span>Скачать для печати</span>
+        </a>
       </div>
     </div>
   );

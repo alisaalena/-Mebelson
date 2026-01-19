@@ -9,19 +9,22 @@ import FlipbookDemo from './components/FlipbookDemo';
 
 const App: React.FC = () => {
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
+  const [activePdf, setActivePdf] = useState<string>('');
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  const openCatalog = () => {
+  const openCatalog = (pdfUrl: string) => {
+    setActivePdf(pdfUrl);
     setIsFlipbookOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
   const closeCatalog = () => {
     setIsFlipbookOpen(false);
+    setActivePdf('');
     document.body.style.overflow = 'auto';
   };
 
@@ -47,7 +50,7 @@ const App: React.FC = () => {
         </div>
         
         <div id="leaflets" className="scroll-mt-[100px]">
-          <LeafletsSection />
+          <LeafletsSection onOpenLeaflet={openCatalog} />
         </div>
         
         <div id="certificates" className="scroll-mt-[100px]">
@@ -60,6 +63,7 @@ const App: React.FC = () => {
           <button 
             onClick={closeCatalog}
             className="absolute top-6 right-6 text-white hover:text-mebelson-red transition-colors z-[1100] bg-white/10 p-2 rounded-full"
+            aria-label="Закрыть"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -67,7 +71,7 @@ const App: React.FC = () => {
           </button>
           <div className="w-full max-w-6xl bg-white rounded-[2rem] p-8 md:p-12 overflow-hidden shadow-2xl relative transform animate-in zoom-in-95 duration-500">
             <div className="h-[65vh] md:h-[75vh]">
-              <FlipbookDemo />
+              <FlipbookDemo pdfUrl={activePdf} />
             </div>
           </div>
         </div>
