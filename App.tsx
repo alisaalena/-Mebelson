@@ -38,9 +38,9 @@ const App: React.FC = () => {
           <section className="container mx-auto px-4 pt-24">
             <div className="mb-12 border-b border-gray-100 pb-8">
                <h2 className="text-3xl md:text-5xl font-black text-mebelson-dark uppercase tracking-tighter">
-                 Наши <span className="text-mebelson-red">Каталоги</span>
+                 Ваш персональный <span className="text-mebelson-red">Гид по стилю</span>
                </h2>
-               <p className="text-gray-400 font-medium text-sm mt-2">Актуальные коллекции мебели 2024-2025</p>
+               <p className="text-gray-400 font-medium text-sm mt-2">Выбирайте мебель с удовольствием в удобном формате журнала</p>
             </div>
             <CatalogExplorer onOpenCatalog={openCatalog} />
           </section>
@@ -72,8 +72,6 @@ const App: React.FC = () => {
           </div>
         </div>
       )}
-      
-      {/* Футер отсутствует, так как используется системный футер Bitrix */}
     </div>
   );
 };
