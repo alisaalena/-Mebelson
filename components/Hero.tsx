@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl">
           <div className="inline-block px-4 py-1.5 bg-white border border-gray-100 text-[10px] font-black text-mebelson-red uppercase tracking-[0.3em] mb-8 rounded-full shadow-sm">
-            Коллекции 2025: Идеи для вашего пространства
+            Коллекции 2026: Идеи для вашего пространства
           </div>
           <h1 className="text-5xl md:text-8xl font-[900] text-mebelson-dark mb-8 leading-[0.9] uppercase tracking-tighter">
             Вдохновение <br/>

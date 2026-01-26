@@ -7,7 +7,7 @@ interface CatalogExplorerProps {
 
 const CatalogExplorer: React.FC<CatalogExplorerProps> = ({ onOpenCatalog }) => {
   const catalogs = [
-    { id: '1', title: 'Общий каталог 2025', label: 'MEBELSON 2025', pdfUrl: '/upload/catalogs/main_2025.pdf', color: 'bg-mebelson-red' },
+    { id: '1', title: 'Общий каталог 2026', label: 'MEBELSON 2026', pdfUrl: '/upload/catalogs/main_2026.pdf', color: 'bg-mebelson-red' },
     { id: '2', title: 'Кухонные системы', label: 'KITCHEN 2024', pdfUrl: '/upload/catalogs/kitchen.pdf', color: 'bg-[#333333]' },
     { id: '3', title: 'Детская мебель', label: 'KIDS 2024', pdfUrl: '/upload/catalogs/kids.pdf', color: 'bg-[#666666]' },
     { id: '4', title: 'Спальни и Гостиные', label: 'HOME 2024', pdfUrl: '/upload/catalogs/living.pdf', color: 'bg-[#888888]' },
