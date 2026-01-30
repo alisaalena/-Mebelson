@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface LeafletsSectionProps {
@@ -7,16 +6,13 @@ interface LeafletsSectionProps {
 
 /**
  * Секция листовок. 
- * Изображения заменены на SVG-заглушки для исключения внешних запросов к Unsplash.
+ * Плейсхолдеры реализованы через CSS-блоки для исключения любых внешних ссылок и протоколов.
  */
 const LeafletsSection: React.FC<LeafletsSectionProps> = ({ onOpenLeaflet }) => {
-  // SVG Placeholder Base64
-  const placeholderImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23eeeeee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23cccccc'%3EPLACEHOLDER%3C/text%3E%3C/svg%3E";
-
   const leaflets = [
-    { title: 'Стиль Nordic', info: 'Готовые решения для гостиной', pdfUrl: 'PLACEHOLDER_LEAFLET_NORDIC_URL', img: placeholderImg },
-    { title: 'Лофт: Шик', info: 'Тренды в дизайне кухонь', pdfUrl: 'PLACEHOLDER_LEAFLET_LOFT_URL', img: placeholderImg },
-    { title: 'Детская Dream', info: 'Безопасность и эргономика', pdfUrl: 'PLACEHOLDER_LEAFLET_KIDS_URL', img: placeholderImg },
+    { title: 'Стиль Nordic', info: 'Готовые решения для гостиной', pdfUrl: 'PLACEHOLDER_LEAFLET_NORDIC_URL' },
+    { title: 'Лофт: Шик', info: 'Тренды в дизайне кухонь', pdfUrl: 'PLACEHOLDER_LEAFLET_LOFT_URL' },
+    { title: 'Детская Dream', info: 'Безопасность и эргономика', pdfUrl: 'PLACEHOLDER_LEAFLET_KIDS_URL' },
   ];
 
   return (
@@ -28,8 +24,14 @@ const LeafletsSection: React.FC<LeafletsSectionProps> = ({ onOpenLeaflet }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {leaflets.map((item, i) => (
             <div key={i} className="group relative bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 hover:border-mebelson-red transition-all">
-              <div className="aspect-[4/3] overflow-hidden bg-gray-200 flex items-center justify-center">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+              {/* CSS-плейсхолдер вместо изображения */}
+              <div className="aspect-[4/3] bg-gray-100 flex items-center justify-center p-8 overflow-hidden">
+                <div className="text-center opacity-20">
+                   <div className="w-12 h-12 border-2 border-current rounded-lg mx-auto mb-2 flex items-center justify-center">
+                     <span className="font-black">IMG</span>
+                   </div>
+                   <div className="text-[10px] font-bold uppercase tracking-widest">Preview Block</div>
+                </div>
               </div>
               <div className="p-6 flex justify-between items-center">
                 <div>
