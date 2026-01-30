@@ -6,42 +6,42 @@ const Pricing: React.FC = () => {
   const plans: PricingPlan[] = [
     {
       name: "Старт",
-      price: "$29",
+      price: "0 ₽",
       features: [
         "До 3 активных каталогов",
         "3D эффект листания",
         "Базовая аналитика",
-        "Размещение на нашем домене",
-        "Поддержка 24/7"
+        "Облачное хранение",
+        "Техподдержка"
       ],
-      cta: "Начать бесплатно"
+      cta: "Начать"
     },
     {
       name: "Бизнес",
-      price: "$79",
+      price: "4990 ₽",
       features: [
-        "До 20 активных каталогов",
-        "Ваш собственный домен",
+        "Неограниченно каталогов",
+        "Интеграция с корзиной B2B",
         "Интерактивные видео-вставки",
         "Полная SEO оптимизация",
-        "Gemini AI ассистент",
-        "Удаление логотипа сервиса"
+        "Персональный менеджер",
+        "Удаление копирайта"
       ],
       cta: "Выбрать Бизнес",
       recommended: true
     },
     {
-      name: "Enterprise",
-      price: "Custom",
+      name: "Дилер",
+      price: "Индив.",
       features: [
-        "Неограниченное кол-во каталогов",
+        "White Label решение",
         "API интеграция",
-        "Персональный менеджер",
-        "Корпоративный дизайн",
-        "Закрытый доступ по паролю",
+        "Обучение персонала",
+        "Брендирование плеера",
+        "Закрытый доступ",
         "SLA 99.9%"
       ],
-      cta: "Связаться с нами"
+      cta: "Обсудить условия"
     }
   ];
 
@@ -49,25 +49,25 @@ const Pricing: React.FC = () => {
     <section id="pricing" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Гибкие тарифные планы</h2>
-          <p className="text-slate-600">Начните бесплатно и масштабируйтесь вместе с нами</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-mebelson-dark uppercase tracking-tight">Тарифы для партнеров</h2>
+          <p className="text-slate-600">Эффективные инструменты продаж для вашего мебельного бизнеса</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, idx) => (
             <div 
               key={idx} 
-              className={`relative bg-white p-8 rounded-3xl border ${plan.recommended ? 'border-blue-500 shadow-2xl scale-105 z-10' : 'border-slate-100 shadow-sm'} transition-all`}
+              className={`relative bg-white p-8 rounded-3xl border ${plan.recommended ? 'border-mebelson-red shadow-2xl scale-105 z-10' : 'border-slate-100 shadow-sm'} transition-all`}
             >
               {plan.recommended && (
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">
-                  Популярный выбор
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-mebelson-red text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">
+                  Оптимально
                 </span>
               )}
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-mebelson-dark">{plan.name}</h3>
               <div className="flex items-baseline space-x-1 mb-6">
                 <span className="text-4xl font-extrabold text-slate-900">{plan.price}</span>
-                {plan.price !== 'Custom' && <span className="text-slate-500">/мес</span>}
+                {plan.price.includes('₽') && <span className="text-slate-500">/мес</span>}
               </div>
               
               <ul className="space-y-4 mb-8">
@@ -83,7 +83,7 @@ const Pricing: React.FC = () => {
               
               <button className={`w-full py-4 rounded-xl font-bold transition-all ${
                 plan.recommended 
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200' 
+                  ? 'bg-mebelson-red text-white hover:opacity-90 shadow-lg' 
                   : 'bg-slate-100 text-slate-900 hover:bg-slate-200'
               }`}>
                 {plan.cta}

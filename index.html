@@ -31,13 +31,11 @@
             scroll-behavior: smooth;
         }
 
-        /* Минимальный CSS для работоспособности прототипа без Tailwind CDN */
         .bg-mebelson-red { background-color: var(--mebelson-red) !important; }
         .text-mebelson-red { color: var(--mebelson-red) !important; }
         .bg-mebelson-dark { background-color: var(--mebelson-dark) !important; }
         .text-mebelson-dark { color: var(--mebelson-dark) !important; }
         
-        /* Стили для контейнеров */
         .container {
             width: 100%;
             margin-left: auto;
@@ -47,7 +45,6 @@
         }
         @media (min-width: 1280px) { .container { max-width: 1280px; } }
 
-        /* Плейсхолдер для сетки, если Tailwind не скомпилирован */
         .grid { display: grid; }
         .flex { display: flex; }
 
@@ -56,20 +53,20 @@
         ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--mebelson-red); }
     </style>
-    
-    <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

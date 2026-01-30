@@ -17,8 +17,7 @@ export interface DownloadMaterial {
 }
 
 /**
- * Represents a single message in the AI Consultant chat interface.
- * Used to track conversation history between the user and the Gemini model.
+ * Сообщение в чате обратной связи.
  */
 export interface Message {
   role: 'user' | 'model';
@@ -26,7 +25,7 @@ export interface Message {
 }
 
 /**
- * Defines the structure of a subscription or pricing plan for the service.
+ * Структура тарифного плана.
  */
 export interface PricingPlan {
   name: string;

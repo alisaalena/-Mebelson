@@ -7,11 +7,10 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-[80px] md:h-[100px]">
         <div className="flex items-center">
           <a href="/" className="flex items-center group">
-            <img 
-              src="https://xn--80adxhks.xn--90ahbybkgx2h.xn--p1ai/upload/sotbit_b2c/3a4/vmje78cvczxsdjqh0ktvqtr4z12a3kua/Logotip-Mebelson-gorizont.png" 
-              alt="Mebelson" 
-              className="h-10 md:h-12 w-auto object-contain"
-            />
+            {/* Путь к локальному логотипу в структуре Bitrix */}
+            <div className="text-2xl font-black text-mebelson-red uppercase tracking-tighter">
+               MEBELSON
+            </div>
           </a>
         </div>
         
