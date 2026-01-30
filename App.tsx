@@ -6,6 +6,7 @@ import CatalogExplorer from './components/CatalogExplorer';
 import LeafletsSection from './components/LeafletsSection';
 import CertificatesSection from './components/CertificatesSection';
 import FlipbookDemo from './components/FlipbookDemo';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
@@ -31,7 +32,7 @@ const App: React.FC = () => {
   if (!isLoaded) return null;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
@@ -58,18 +59,20 @@ const App: React.FC = () => {
         </div>
       </main>
 
+      <Footer />
+
       {isFlipbookOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/90 p-4">
           <button 
             onClick={closeCatalog}
-            className="absolute top-6 right-6 text-white hover:text-mebelson-red transition-colors z-[1100] bg-white/10 p-2 rounded-full"
+            className="absolute top-6 right-6 text-white hover:text-mebelson-red z-[1100] bg-white/10 p-2 rounded-full"
             aria-label="Закрыть"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div className="w-full max-w-6xl bg-white rounded-[2rem] p-8 md:p-12 overflow-hidden shadow-2xl relative transform animate-in zoom-in-95 duration-500">
+          <div className="w-full max-w-6xl bg-white rounded-[2rem] p-8 md:p-12 overflow-hidden shadow-2xl relative">
             <div className="h-[65vh] md:h-[75vh]">
               <FlipbookDemo pdfUrl={activePdf} />
             </div>

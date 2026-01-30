@@ -11,19 +11,22 @@ export interface Catalog {
 export interface DownloadMaterial {
   id: string;
   title: string;
-  type: 'PDF' | 'ZIP' | 'IMG' | 'DOC';
+  type: 'PDF' | 'ZIP' | 'IMG' | 'DOC' | 'XLSX';
   size: string;
-  category: 'Сертификаты' | 'Фото' | 'Листовки' | 'Прайс-листы';
+  category: 'Сертификаты' | 'Фото' | 'Листовки' | 'Прайс-листы' | 'Документация';
 }
 
+/**
+ * Represents a single message in the AI Consultant chat interface.
+ * Used to track conversation history between the user and the Gemini model.
+ */
 export interface Message {
   role: 'user' | 'model';
   text: string;
 }
 
 /**
- * Interface representing a pricing tier for the service.
- * Used in the Pricing component.
+ * Defines the structure of a subscription or pricing plan for the service.
  */
 export interface PricingPlan {
   name: string;
