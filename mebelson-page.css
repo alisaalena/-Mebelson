@@ -1,27 +1,33 @@
-/* Изолированные стили Mebelson Page */
+/* Изолированные стили Mebelson Page - ЭТАЛОН 2026 */
 .mebelson-page {
     --me-red: #E31E24;
-    --me-dark: #333333;
+    --me-red-dark: #9B1418;
+    --me-dark: #1A1A1A;
     --me-gray: #777777;
     --me-light: #F4F4F4;
-    --me-border: #E5E5E5;
+    --me-border: #EBEBEB;
     --me-bg: #FBFBFB;
+    --me-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    --me-shadow-hover: 0 25px 50px -12px rgba(0,0,0,0.12);
     
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--me-bg);
     color: var(--me-dark);
+    line-height: 1.5;
 }
 
 .mebelson-page *, .mebelson-page *::before, .mebelson-page *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /* Сетки и макет */
 .mebelson-page .container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
-    max-width: 1280px;
+    padding: 0 1.5rem;
+    max-width: 1400px;
 }
 
 .mebelson-page .grid { display: grid; gap: 2rem; }
@@ -31,17 +37,29 @@
 .mebelson-page .justify-center { justify-content: center; }
 
 @media (min-width: 640px) { .mebelson-page .sm\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .mebelson-page .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); } }
 @media (min-width: 768px) { .mebelson-page .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .mebelson-page .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); } }
 
 /* Типографика */
 .mebelson-page .text-mebelson-red { color: var(--me-red) !important; }
 .mebelson-page .text-mebelson-dark { color: var(--me-dark) !important; }
 .mebelson-page .uppercase { text-transform: uppercase; }
 .mebelson-page .tracking-tighter { letter-spacing: -0.05em; }
-.mebelson-page .tracking-widest { letter-spacing: 0.2em; }
+.mebelson-page .tracking-widest { letter-spacing: 0.25em; }
 .mebelson-page .font-black { font-weight: 900; }
 .mebelson-page .font-bold { font-weight: 700; }
+
+.mebelson-page h1 {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.92;
+    font-weight: 900;
+}
+
+.mebelson-page h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    font-weight: 900;
+}
 
 /* Компоненты */
 .mebelson-page .btn-primary {
@@ -51,29 +69,37 @@
     border-radius: 1rem;
     font-size: 11px;
     font-weight: 900;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mebelson-page .btn-primary:hover {
     background-color: var(--me-red);
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px -12px rgba(227,30,36,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px -10px rgba(227,30,36,0.3);
 }
 
 .mebelson-page .catalog-card {
     background: white;
-    border-radius: 2rem;
+    border-radius: 2.5rem;
     border: 1px solid var(--me-border);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
 }
 
 .mebelson-page .catalog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.05);
+    transform: translateY(-8px);
+    box-shadow: var(--me-shadow-hover);
 }
 
 .mebelson-page .card-cover {
@@ -85,10 +111,15 @@
     overflow: hidden;
 }
 
+.mebelson-page .bg-gradient-red {
+    background: linear-gradient(135deg, var(--me-red), var(--me-red-dark));
+}
+
 .mebelson-page .card-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
     opacity: 0;
     transition: opacity 0.3s ease;
     display: flex;
@@ -100,22 +131,81 @@
     opacity: 1;
 }
 
-.mebelson-page .bg-mebelson-red { background-color: var(--me-red) !important; }
-.mebelson-page .bg-mebelson-dark { background-color: var(--me-dark) !important; }
+.mebelson-page .eye-btn {
+    width: 64px;
+    height: 64px;
+    background-color: white;
+    color: var(--me-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 
-/* Утилиты */
+.mebelson-page .eye-btn:hover {
+    transform: scale(1.15);
+    background-color: var(--me-red);
+    color: white;
+}
+
+/* Pricing & Features */
+.mebelson-page .pricing-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 3rem;
+    border: 1px solid var(--me-border);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.mebelson-page .pricing-card.recommended {
+    border-color: var(--me-red);
+    box-shadow: 0 30px 60px -15px rgba(227,30,36,0.15);
+    z-index: 10;
+}
+
+.mebelson-page .badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--me-red);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* Aspect Ratios */
+.mebelson-page .aspect-4-3 { aspect-ratio: 4/3; }
+.mebelson-page .aspect-16-9 { aspect-ratio: 16/9; }
+
+/* Utilities */
+.mebelson-page .shadow-xl { box-shadow: var(--me-shadow); }
 .mebelson-page .rounded-2xl { border-radius: 1.5rem; }
-.mebelson-page .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+.mebelson-page .rounded-3xl { border-radius: 2rem; }
 .mebelson-page .p-8 { padding: 2rem; }
 .mebelson-page .mb-8 { margin-bottom: 2rem; }
 .mebelson-page .pt-24 { padding-top: 6rem; }
+.mebelson-page .min-h-screen { min-height: 100vh; }
 
-/* Navbar Specific */
-.mebelson-page .navbar {
-    height: 100px;
-    background: white;
-    border-bottom: 1px solid var(--me-border);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+.mebelson-page .bg-white { background-color: #ffffff; }
+.mebelson-page .bg-gray-50 { background-color: #F9F9F9; }
+.mebelson-page .bg-red-50 { background-color: rgba(227,30,36,0.05); }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mebelson-page .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
