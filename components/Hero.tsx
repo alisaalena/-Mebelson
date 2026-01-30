@@ -1,29 +1,28 @@
-
 import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <header className="relative bg-[#FBFBFB] pt-16 pb-20 border-b border-gray-100">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl">
-          <div className="inline-block px-4 py-1.5 bg-white border border-gray-100 text-[10px] font-black text-mebelson-red uppercase tracking-[0.3em] mb-8 rounded-full shadow-sm">
+    <header style={{ position: 'relative', backgroundColor: '#FBFBFB', padding: '4rem 0 5rem', borderBottom: '1px solid #eee' }}>
+      <div className="container">
+        <div style={{ maxWidth: '900px' }}>
+          <div style={{ display: 'inline-block', padding: '0.4rem 1rem', backgroundColor: 'white', border: '1px solid #eee', fontSize: '10px', fontWeight: 900, color: '#E31E24', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '2rem', borderRadius: '99px' }}>
             Коллекции 2026: Идеи для вашего пространства
           </div>
-          <h1 className="text-5xl md:text-8xl font-[900] text-mebelson-dark mb-8 leading-[0.9] uppercase tracking-tighter">
+          <h1 className="font-black uppercase tracking-tighter" style={{ fontSize: '5rem', lineHeight: 0.9, marginBottom: '2rem' }}>
             Вдохновение <br/>
             для <span className="text-mebelson-red">Вашего Дома</span>
           </h1>
-          <p className="text-lg text-gray-500 mb-10 max-w-xl leading-relaxed font-medium">
+          <p style={{ fontSize: '1.125rem', color: '#666', marginBottom: '2.5rem', maxWidth: '36rem', lineHeight: 1.6, fontWeight: 500 }}>
             Листайте наши интерактивные каталоги, чтобы найти идеальное решение для кухни, спальни или детской. Мы создаем мебель, в которой хочется жить.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#catalogs" className="px-10 py-5 bg-mebelson-dark text-white font-black text-[11px] uppercase tracking-widest rounded-2xl hover:bg-mebelson-red transition-all shadow-xl shadow-gray-200">
+          <div className="flex items-center" style={{ gap: '1rem' }}>
+            <a href="#catalogs" className="btn-primary">
               Посмотреть коллекции
             </a>
-            <div className="hidden sm:flex items-center space-x-4 ml-6 px-6 border-l border-gray-200">
-               <div className="text-left">
-                  <p className="text-[10px] font-black uppercase text-gray-400 tracking-tighter">Более 500+</p>
-                  <p className="text-xs font-bold text-mebelson-dark">Готовых решений</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1.5rem', paddingLeft: '1.5rem', borderLeft: '1px solid #ddd' }}>
+               <div style={{ textAlign: 'left' }}>
+                  <p style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', color: '#999', margin: 0 }}>Более 500+</p>
+                  <p style={{ fontSize: '12px', fontWeight: 700, margin: 0 }}>Готовых решений</p>
                </div>
             </div>
           </div>

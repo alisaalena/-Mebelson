@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -32,29 +31,29 @@ const App: React.FC = () => {
   if (!isLoaded) return null;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="mebelson-page min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
         <Hero />
 
-        <div id="catalogs" className="scroll-mt-[100px]">
-          <section className="container mx-auto px-4 pt-24">
-            <div className="mb-12 border-b border-gray-100 pb-8">
-               <h2 className="text-3xl md:text-5xl font-black text-mebelson-dark uppercase tracking-tighter">
+        <div id="catalogs" style={{ scrollMarginTop: '100px' }}>
+          <section className="container pt-24">
+            <div className="mb-8" style={{ borderBottom: '1px solid #eee', paddingBottom: '2rem' }}>
+               <h2 className="font-black uppercase tracking-tighter" style={{ fontSize: '3rem', margin: 0 }}>
                  Ваш персональный <span className="text-mebelson-red">Гид по стилю</span>
                </h2>
-               <p className="text-gray-400 font-medium text-sm mt-2">Выбирайте мебель с удовольствием в удобном формате журнала</p>
+               <p style={{ color: '#999', fontWeight: 500, fontSize: '14px', marginTop: '0.5rem' }}>Выбирайте мебель с удовольствием в удобном формате журнала</p>
             </div>
             <CatalogExplorer onOpenCatalog={openCatalog} />
           </section>
         </div>
         
-        <div id="leaflets" className="scroll-mt-[100px]">
+        <div id="leaflets" style={{ scrollMarginTop: '100px' }}>
           <LeafletsSection onOpenLeaflet={openCatalog} />
         </div>
         
-        <div id="certificates" className="scroll-mt-[100px]">
+        <div id="certificates" style={{ scrollMarginTop: '100px' }}>
           <CertificatesSection />
         </div>
       </main>
@@ -62,18 +61,18 @@ const App: React.FC = () => {
       <Footer />
 
       {isFlipbookOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/90 p-4">
+        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.9)', padding: '1rem' }}>
           <button 
             onClick={closeCatalog}
-            className="absolute top-6 right-6 text-white hover:text-mebelson-red z-[1100] bg-white/10 p-2 rounded-full"
+            style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', color: 'white', zIndex: 1100, backgroundColor: 'rgba(255,255,255,0.1)', padding: '0.5rem', borderRadius: '50%' }}
             aria-label="Закрыть"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: '2rem', height: '2rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div className="w-full max-w-6xl bg-white rounded-[2rem] p-8 md:p-12 overflow-hidden shadow-2xl relative">
-            <div className="h-[65vh] md:h-[75vh]">
+          <div style={{ width: '100%', maxWidth: '1200px', backgroundColor: 'white', borderRadius: '2rem', padding: '2rem', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ height: '70vh' }}>
               <FlipbookDemo pdfUrl={activePdf} />
             </div>
           </div>

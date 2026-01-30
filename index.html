@@ -4,58 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mebelson | Интерактивные каталоги 2026 (Прототип верстки)</title>
-    
     <meta name="description" content="Эталон верстки портала электронных каталогов Mebelson 2026.">
     <meta name="theme-color" content="#E31E24">
-
-    <style>
-        /* Базовый сброс и системные шрифты */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        :root {
-            --mebelson-red: #E31E24;
-            --mebelson-dark: #333333;
-            --mebelson-gray: #777777;
-            --mebelson-light: #F4F4F4;
-            --mebelson-border: #E5E5E5;
-            --mebelson-bg: #FBFBFB;
-        }
-
-        html, body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--mebelson-bg);
-            color: var(--mebelson-dark);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-        /* Вспомогательные классы для прототипа (замена Tailwind runtime) */
-        .container {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        @media (min-width: 1280px) { .container { max-width: 1280px; } }
-
-        .bg-mebelson-red { background-color: var(--mebelson-red) !important; }
-        .text-mebelson-red { color: var(--mebelson-red) !important; }
-        .bg-mebelson-dark { background-color: var(--mebelson-dark) !important; }
-        .text-mebelson-dark { color: var(--mebelson-dark) !important; }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--mebelson-red); }
-    </style>
 <script type="importmap">
 {
   "imports": {
