@@ -37,7 +37,7 @@
 
 /* Шапка (Navbar) по скриншоту */
 .mebelson-page .navbar-main {
-    height: 100px;
+    height: 90px; /* Немного уменьшили высоту для компактности */
     display: flex;
     align-items: center;
     background: #fff;
@@ -53,29 +53,29 @@
 .mebelson-page .logo-box {
     background-color: var(--me-red);
     color: #fff;
-    padding: 10px 22px;
+    padding: 8px 18px; /* Более аккуратные отступы */
     border-radius: 4px;
     font-weight: 800;
-    font-size: 26px;
-    letter-spacing: -0.02em;
+    font-size: 21px; /* Уменьшили с 26px */
+    letter-spacing: -0.01em;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: auto; /* Прижимает лого к левому краю, а остальное вправо */
+    margin-right: auto;
 }
 
 .mebelson-page .nav-group {
     display: flex;
     align-items: center;
-    gap: 40px; /* Большие пробелы между пунктами по запросу */
+    gap: 40px;
 }
 
 .mebelson-page .nav-link {
     text-decoration: none;
     color: #666666;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 16px;
     transition: color 0.2s;
     white-space: nowrap;
 }
@@ -89,7 +89,7 @@
 }
 
 .mebelson-page .search-container {
-    margin-left: 60px; /* Отступ между меню и лупой */
+    margin-left: 50px;
 }
 
 .mebelson-page .search-btn {
@@ -118,15 +118,15 @@
 /* Hero Section */
 .mebelson-page .me-hero {
     background: #fff;
-    padding: 50px 0 70px;
+    padding: 60px 0 80px;
 }
 
 .mebelson-page .me-hero-title {
-    font-size: 52px;
+    font-size: 64px; /* Увеличили с 52px для солидности */
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.05;
     margin-bottom: 25px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .mebelson-page .me-hero-title span {
@@ -134,10 +134,10 @@
 }
 
 .mebelson-page .me-hero-descr {
-    font-size: 19px;
+    font-size: 20px;
     color: #666;
-    max-width: 620px;
-    margin-bottom: 35px;
+    max-width: 650px;
+    margin-bottom: 40px;
     line-height: 1.6;
 }
 
@@ -145,14 +145,14 @@
 .mebelson-page .btn-red {
     background: var(--me-red);
     color: #ffffff;
-    height: 52px;
-    padding: 0 35px;
+    height: 54px;
+    padding: 0 40px;
     border-radius: 6px;
     font-size: 16px;
     font-weight: 700;
     border: none;
     cursor: pointer;
-    display: inline-flex; /* Кнопка занимает только нужное место */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
