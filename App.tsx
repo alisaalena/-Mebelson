@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import CatalogExplorer from './components/CatalogExplorer';
 import LeafletsSection from './components/LeafletsSection';
 import CertificatesSection from './components/CertificatesSection';
@@ -32,20 +34,22 @@ const App: React.FC = () => {
     <div className="mebelson-page min-h-screen">
       <Navbar />
       
-      <main className="container py-8">
+      <Hero />
+      
+      <main className="container">
         <div className="breadcrumb">Главная / Электронные каталоги</div>
         
-        <div id="catalogs">
+        <section id="catalogs" className="section-padding">
           <CatalogExplorer onOpenCatalog={openCatalog} />
-        </div>
+        </section>
         
-        <div id="leaflets" className="mt-20">
+        <section id="leaflets" className="section-padding border-t border-gray-100">
           <LeafletsSection onOpenLeaflet={openCatalog} />
-        </div>
+        </section>
         
-        <div id="certificates" className="mt-20 mb-20">
+        <section id="certificates" className="section-padding border-t border-gray-100 mb-20">
           <CertificatesSection />
-        </div>
+        </section>
       </main>
 
       {isFlipbookOpen && (
