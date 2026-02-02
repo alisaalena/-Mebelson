@@ -40,35 +40,44 @@
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background: #fff;
     border-bottom: 1px solid #f0f0f0;
+}
+
+.mebelson-page .navbar-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .mebelson-page .logo-box {
     background-color: var(--me-red);
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 4px;
-    font-weight: 900;
-    font-size: 24px;
+    font-weight: 800;
+    font-size: 26px;
     letter-spacing: -0.02em;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto; /* Прижимает лого к левому краю, а остальное вправо */
 }
 
-.mebelson-page .nav-menu {
+.mebelson-page .nav-group {
     display: flex;
-    gap: 30px;
     align-items: center;
+    gap: 40px; /* Большие пробелы между пунктами по запросу */
 }
 
 .mebelson-page .nav-link {
     text-decoration: none;
-    color: #555555;
-    font-weight: 600;
-    font-size: 16px;
+    color: #666666;
+    font-weight: 500;
+    font-size: 17px;
     transition: color 0.2s;
+    white-space: nowrap;
 }
 
 .mebelson-page .nav-link.active {
@@ -79,40 +88,45 @@
     color: var(--me-red);
 }
 
+.mebelson-page .search-container {
+    margin-left: 60px; /* Отступ между меню и лупой */
+}
+
 .mebelson-page .search-btn {
     background: none;
     border: none;
     cursor: pointer;
-    color: #555555;
+    color: #444;
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 5px;
 }
 
 /* Хлебные крошки */
 .mebelson-page .breadcrumb {
     font-size: 14px;
     color: #9CA3AF;
-    padding: 30px 0;
+    padding: 35px 0 25px;
     margin: 0;
 }
 
 .mebelson-page .breadcrumb span {
-    margin: 0 8px;
+    margin: 0 12px;
     color: #D1D5DB;
 }
 
 /* Hero Section */
 .mebelson-page .me-hero {
     background: #fff;
-    padding: 60px 0;
+    padding: 50px 0 70px;
 }
 
 .mebelson-page .me-hero-title {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    letter-spacing: -0.02em;
 }
 
 .mebelson-page .me-hero-title span {
@@ -120,34 +134,39 @@
 }
 
 .mebelson-page .me-hero-descr {
-    font-size: 18px;
+    font-size: 19px;
     color: #666;
-    max-width: 600px;
-    margin-bottom: 30px;
+    max-width: 620px;
+    margin-bottom: 35px;
+    line-height: 1.6;
 }
 
-/* Кнопки - исправление ширины */
+/* Кнопки - ограничение ширины */
 .mebelson-page .btn-red {
     background: var(--me-red);
     color: #ffffff;
-    height: 50px;
-    padding: 0 32px;
+    height: 52px;
+    padding: 0 35px;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     border: none;
     cursor: pointer;
-    display: inline-flex; /* Не на всю ширину */
+    display: inline-flex; /* Кнопка занимает только нужное место */
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    transition: background 0.2s;
+    gap: 12px;
+    transition: background 0.2s, transform 0.1s;
     text-decoration: none;
     white-space: nowrap;
 }
 
 .mebelson-page .btn-red:hover {
     background: var(--me-red-hover);
+}
+
+.mebelson-page .btn-red:active {
+    transform: scale(0.98);
 }
 
 /* Сетка каталогов */
@@ -167,14 +186,15 @@
 
 .mebelson-page .cat-card {
     border: 1px solid #eeeeee;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
 }
 
 .mebelson-page .cat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
 }
 
 .mebelson-page .cat-card-top {
@@ -183,36 +203,41 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 20px;
 }
 
 .mebelson-page .cat-card-label {
     color: #fff;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
 .mebelson-page .cat-card-body {
-    padding: 20px;
+    padding: 25px;
 }
 
 .mebelson-page .cat-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 15px;
-    height: 2.4em;
+    margin-bottom: 20px;
+    height: 2.8em;
     overflow: hidden;
+    line-height: 1.4;
 }
 
 .mebelson-page .download-link {
     display: block;
     text-align: center;
-    font-size: 13px;
-    color: #888;
-    margin-top: 15px;
+    font-size: 14px;
+    color: #999;
+    margin-top: 18px;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .mebelson-page .download-link:hover {
+    color: var(--me-red);
     text-decoration: underline;
 }
 
@@ -220,29 +245,29 @@
 .mebelson-page .cert-grid {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
 .mebelson-page .cert-item {
     border: 1px solid #eee;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .mebelson-page .cert-icon {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     background: var(--me-red-light);
     color: var(--me-red);
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .mebelson-page .section-padding {
-    padding: 50px 0;
+    padding: 60px 0;
 }
