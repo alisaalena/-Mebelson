@@ -2,27 +2,27 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <header style={{ position: 'relative', backgroundColor: '#FBFBFB', padding: '4rem 0 5rem', borderBottom: '1px solid #eee' }}>
+    <header className="py-24 bg-[#FBFBFB] border-b border-gray-100 animate-fade-in">
       <div className="container">
-        <div style={{ maxWidth: '900px' }}>
-          <div style={{ display: 'inline-block', padding: '0.4rem 1rem', backgroundColor: 'white', border: '1px solid #eee', fontSize: '10px', fontWeight: 900, color: '#E31E24', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '2rem', borderRadius: '99px' }}>
+        <div className="max-w-4xl">
+          <div className="hero-tag">
             Коллекции 2026: Идеи для вашего пространства
           </div>
-          <h1 className="font-black uppercase tracking-tighter" style={{ fontSize: '5rem', lineHeight: 0.9, marginBottom: '2rem' }}>
+          <h1 className="font-black uppercase tracking-tighter">
             Вдохновение <br/>
             для <span className="text-mebelson-red">Вашего Дома</span>
           </h1>
-          <p style={{ fontSize: '1.125rem', color: '#666', marginBottom: '2.5rem', maxWidth: '36rem', lineHeight: 1.6, fontWeight: 500 }}>
+          <p className="text-lg text-gray-500 mb-10 max-w-xl leading-relaxed font-medium mt-8">
             Листайте наши интерактивные каталоги, чтобы найти идеальное решение для кухни, спальни или детской. Мы создаем мебель, в которой хочется жить.
           </p>
-          <div className="flex items-center" style={{ gap: '1rem' }}>
+          <div className="flex items-center gap-8">
             <a href="#catalogs" className="btn-primary">
               Посмотреть коллекции
             </a>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1.5rem', paddingLeft: '1.5rem', borderLeft: '1px solid #ddd' }}>
-               <div style={{ textAlign: 'left' }}>
-                  <p style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', color: '#999', margin: 0 }}>Более 500+</p>
-                  <p style={{ fontSize: '12px', fontWeight: 700, margin: 0 }}>Готовых решений</p>
+            <div className="hidden sm:flex items-center space-x-4 pl-8 border-l border-gray-200">
+               <div className="text-left">
+                  <p className="text-[10px] font-black uppercase text-gray-400 tracking-tighter">Более 500+</p>
+                  <p className="text-xs font-bold text-mebelson-dark">Готовых решений</p>
                </div>
             </div>
           </div>

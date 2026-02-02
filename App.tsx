@@ -31,7 +31,7 @@ const App: React.FC = () => {
   if (!isLoaded) return null;
 
   return (
-    <div className="mebelson-page min-h-screen flex flex-col">
+    <div className="mebelson-page flex flex-col min-h-screen">
       <Navbar />
       
       <main className="flex-grow">
@@ -39,11 +39,11 @@ const App: React.FC = () => {
 
         <div id="catalogs" style={{ scrollMarginTop: '100px' }}>
           <section className="container pt-24">
-            <div className="mb-8" style={{ borderBottom: '1px solid #eee', paddingBottom: '2rem' }}>
-               <h2 className="font-black uppercase tracking-tighter" style={{ fontSize: '3rem', margin: 0 }}>
+            <div className="mb-12 border-b border-gray-100 pb-8">
+               <h2 className="uppercase tracking-tighter">
                  Ваш персональный <span className="text-mebelson-red">Гид по стилю</span>
                </h2>
-               <p style={{ color: '#999', fontWeight: 500, fontSize: '14px', marginTop: '0.5rem' }}>Выбирайте мебель с удовольствием в удобном формате журнала</p>
+               <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mt-4">Выбирайте мебель с удовольствием в удобном формате журнала</p>
             </div>
             <CatalogExplorer onOpenCatalog={openCatalog} />
           </section>
@@ -61,18 +61,19 @@ const App: React.FC = () => {
       <Footer />
 
       {isFlipbookOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.9)', padding: '1rem' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(10px)', padding: '1.5rem' }}>
           <button 
             onClick={closeCatalog}
-            style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', color: 'white', zIndex: 1100, backgroundColor: 'rgba(255,255,255,0.1)', padding: '0.5rem', borderRadius: '50%' }}
+            className="eye-btn"
+            style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', zIndex: 1100, transform: 'none' }}
             aria-label="Закрыть"
           >
-            <svg style={{ width: '2rem', height: '2rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: '1.5rem', height: '1.5rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div style={{ width: '100%', maxWidth: '1200px', backgroundColor: 'white', borderRadius: '2rem', padding: '2rem', overflow: 'hidden', position: 'relative' }}>
-            <div style={{ height: '70vh' }}>
+          <div className="w-full max-w-6xl bg-white rounded-3xl p-8 overflow-hidden relative shadow-2xl">
+            <div style={{ height: '75vh' }}>
               <FlipbookDemo pdfUrl={activePdf} />
             </div>
           </div>

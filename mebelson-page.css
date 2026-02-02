@@ -1,4 +1,7 @@
-/* Изолированные стили Mebelson Page - ЭТАЛОН 2026 */
+/* 
+   Изолированные стили Mebelson Page - ЭТАЛОН 2026 
+   Полное соответствие ORIGINAL_classes.txt
+*/
 .mebelson-page {
     --me-red: #E31E24;
     --me-red-dark: #9B1418;
@@ -7,13 +10,17 @@
     --me-light: #F4F4F4;
     --me-border: #EBEBEB;
     --me-bg: #FBFBFB;
-    --me-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
-    --me-shadow-hover: 0 25px 50px -12px rgba(0,0,0,0.12);
+    
+    /* Shadows */
+    --me-shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --me-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --me-shadow-2xl: 0 35px 60px -15px rgba(0, 0, 0, 0.25);
     
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--me-bg);
     color: var(--me-dark);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 .mebelson-page *, .mebelson-page *::before, .mebelson-page *::after {
@@ -27,7 +34,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
-    max-width: 1400px;
+    max-width: 1440px;
 }
 
 .mebelson-page .grid { display: grid; gap: 2rem; }
@@ -37,7 +44,6 @@
 .mebelson-page .justify-center { justify-content: center; }
 
 @media (min-width: 640px) { .mebelson-page .sm\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 768px) { .mebelson-page .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1024px) { .mebelson-page .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); } }
 
 /* Типографика */
@@ -45,18 +51,19 @@
 .mebelson-page .text-mebelson-dark { color: var(--me-dark) !important; }
 .mebelson-page .uppercase { text-transform: uppercase; }
 .mebelson-page .tracking-tighter { letter-spacing: -0.05em; }
-.mebelson-page .tracking-widest { letter-spacing: 0.25em; }
+.mebelson-page .tracking-widest { letter-spacing: 0.3em; }
 .mebelson-page .font-black { font-weight: 900; }
 .mebelson-page .font-bold { font-weight: 700; }
 
 .mebelson-page h1 {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    line-height: 0.92;
+    font-size: clamp(3rem, 12vw, 8rem);
+    line-height: 0.9;
     font-weight: 900;
+    letter-spacing: -0.05em;
 }
 
 .mebelson-page h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2.2rem, 6vw, 4rem);
     line-height: 1;
     font-weight: 900;
 }
@@ -66,45 +73,42 @@
     background-color: var(--me-dark);
     color: white;
     padding: 1.25rem 2.5rem;
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     font-size: 11px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    box-shadow: var(--me-shadow-xl);
     border: none;
     cursor: pointer;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .mebelson-page .btn-primary:hover {
     background-color: var(--me-red);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px -10px rgba(227,30,36,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px -10px rgba(227,30,36,0.3);
 }
 
 .mebelson-page .catalog-card {
     background: white;
-    border-radius: 2.5rem;
+    border-radius: 2rem;
     border: 1px solid var(--me-border);
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
 }
 
 .mebelson-page .catalog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--me-shadow-hover);
+    transform: translateY(-12px);
+    box-shadow: var(--me-shadow-2xl);
 }
 
 .mebelson-page .card-cover {
-    aspect-ratio: 3/4;
     position: relative;
+    aspect-ratio: 3/4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,16 +116,16 @@
 }
 
 .mebelson-page .bg-gradient-red {
-    background: linear-gradient(135deg, var(--me-red), var(--me-red-dark));
+    background: linear-gradient(135deg, var(--me-red) 0%, var(--me-red-dark) 100%);
 }
 
 .mebelson-page .card-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,70 +146,45 @@
     justify-content: center;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.75);
+    box-shadow: var(--me-shadow-xl);
 }
 
-.mebelson-page .eye-btn:hover {
-    transform: scale(1.15);
-    background-color: var(--me-red);
-    color: white;
+.mebelson-page .catalog-card:hover .eye-btn {
+    transform: scale(1);
 }
 
-/* Pricing & Features */
-.mebelson-page .pricing-card {
+.mebelson-page .aspect-4-3 { aspect-ratio: 4/3; }
+
+/* Hero Specific */
+.mebelson-page .hero-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
     background: white;
-    padding: 3rem;
-    border-radius: 3rem;
     border: 1px solid var(--me-border);
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.mebelson-page .pricing-card.recommended {
-    border-color: var(--me-red);
-    box-shadow: 0 30px 60px -15px rgba(227,30,36,0.15);
-    z-index: 10;
-}
-
-.mebelson-page .badge {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--me-red);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 99px;
     font-size: 10px;
     font-weight: 900;
+    color: var(--me-red);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
+    border-radius: 99px;
+    margin-bottom: 2rem;
+    box-shadow: var(--me-shadow-sm);
 }
 
-/* Aspect Ratios */
-.mebelson-page .aspect-4-3 { aspect-ratio: 4/3; }
-.mebelson-page .aspect-16-9 { aspect-ratio: 16/9; }
+.mebelson-page .py-24 { padding: 6rem 0; }
+.mebelson-page .pt-24 { padding-top: 6rem; }
+.mebelson-page .mb-12 { margin-bottom: 3rem; }
 
 /* Utilities */
-.mebelson-page .shadow-xl { box-shadow: var(--me-shadow); }
-.mebelson-page .rounded-2xl { border-radius: 1.5rem; }
-.mebelson-page .rounded-3xl { border-radius: 2rem; }
-.mebelson-page .p-8 { padding: 2rem; }
-.mebelson-page .mb-8 { margin-bottom: 2rem; }
-.mebelson-page .pt-24 { padding-top: 6rem; }
-.mebelson-page .min-h-screen { min-height: 100vh; }
-
-.mebelson-page .bg-white { background-color: #ffffff; }
-.mebelson-page .bg-gray-50 { background-color: #F9F9F9; }
-.mebelson-page .bg-red-50 { background-color: rgba(227,30,36,0.05); }
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.mebelson-page .rounded-3xl { border-radius: 2.5rem; }
+.mebelson-page .shadow-xl { box-shadow: var(--me-shadow-xl); }
+.mebelson-page .animate-fade-in {
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mebelson-page .animate-fade-in {
-    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
