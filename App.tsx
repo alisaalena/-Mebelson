@@ -7,13 +7,39 @@ import LeafletsSection from './components/LeafletsSection';
 import CertificatesSection from './components/CertificatesSection';
 import FlipbookDemo from './components/FlipbookDemo';
 
+// Определение типов для данных из Bitrix
+interface MebelsonData {
+  catalogs: any[];
+  leaflets: any[];
+}
+
+declare global {
+  interface Window {
+    mebelsonData?: MebelsonData;
+  }
+}
+
 const App: React.FC = () => {
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
   const [activePdf, setActivePdf] = useState<string>('');
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState<MebelsonData>({ catalogs: [], leaflets: [] });
 
   useEffect(() => {
-    setIsLoaded(true);
+    // Инициализация данных из глобальной переменной Bitrix или заглушки
+    const bitrixData = window.mebelsonData || {
+      catalogs: [
+        { id: '1', year: '2025', title: 'Коллекция: Корпусная мебель 2025', label: 'MEBELSON 2025', size: '24 Mb', color: 'red', pdfUrl: '/upload/cat_2025.pdf' },
+        { id: '2', year: '2024', title: 'Идеи для Вашей КУХНИ', label: 'KITCHEN 2024', size: '12 Mb', color: 'dark', pdfUrl: '/upload/kitchen_2024.pdf' },
+        { id: '3', year: '2024', title: 'Уютные СПАЛЬНИ', label: 'BEDROOM 2024', size: '8.5 Mb', color: 'gray-dark', pdfUrl: '/upload/bedroom_2024.pdf' },
+        { id: '4', year: '2023', title: 'Гостиные и Прихожие', label: 'LIVING ROOM 23', size: '15 Mb', color: 'gray', pdfUrl: '/upload/living_2023.pdf' },
+      ],
+      leaflets: [
+        { title: 'Стиль Nordic', info: 'Идеи для светлой гостиной', pdfUrl: '/upload/nordic.pdf' },
+        { title: 'Лофт: Тренды', info: 'Современные решения для кухни', pdfUrl: '/upload/loft.pdf' },
+        { title: 'Детская Dream', info: 'Комфорт для самых маленьких', pdfUrl: '/upload/kids.pdf' },
+      ]
+    };
+    setData(bitrixData);
   }, []);
 
   const openCatalog = (pdfUrl: string) => {
@@ -28,23 +54,26 @@ const App: React.FC = () => {
     document.body.style.overflow = 'auto';
   };
 
-  if (!isLoaded) return null;
-
   return (
     <div className="mebelson-page min-h-screen">
       <Navbar />
-      
       <Hero />
       
       <main className="container">
-        <div className="breadcrumb">Главная / Электронные каталоги</div>
+        <div className="breadcrumb">Главная / Гид по стилю</div>
         
         <section id="catalogs" className="section-padding">
-          <CatalogExplorer onOpenCatalog={openCatalog} />
+          <CatalogExplorer 
+            catalogs={data.catalogs} 
+            onOpenCatalog={openCatalog} 
+          />
         </section>
         
         <section id="leaflets" className="section-padding border-t border-gray-100">
-          <LeafletsSection onOpenLeaflet={openCatalog} />
+          <LeafletsSection 
+            leaflets={data.leaflets} 
+            onOpenLeaflet={openCatalog} 
+          />
         </section>
         
         <section id="certificates" className="section-padding border-t border-gray-100 mb-20">
@@ -52,20 +81,17 @@ const App: React.FC = () => {
         </section>
       </main>
 
+      {/* Модальное окно DearFlip */}
       {isFlipbookOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(10px)', padding: '1.5rem' }}>
-          <button 
-            onClick={closeCatalog}
-            className="btn-red"
-            style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', zIndex: 1100, width: 'auto', padding: '10px' }}
-            aria-label="Закрыть"
-          >
-            <svg style={{ width: '1.5rem', height: '1.5rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          <div className="w-full max-w-6xl bg-white rounded-xl p-8 overflow-hidden relative shadow-2xl">
-            <div style={{ height: '75vh' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(8px)', padding: '20px' }}>
+          <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl relative flex flex-col" style={{ height: '90vh' }}>
+            <div className="flex items-center justify-between p-4 border-b">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">3D Просмотр каталога</span>
+              <button onClick={closeCatalog} className="btn-red" style={{ width: 'auto', height: '32px', padding: '0 12px', fontSize: '11px' }}>
+                Закрыть
+              </button>
+            </div>
+            <div className="flex-grow overflow-hidden">
               <FlipbookDemo pdfUrl={activePdf} />
             </div>
           </div>
