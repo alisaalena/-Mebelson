@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
           <p className="me-hero-descr">
             Листайте интерактивные коллекции Mebelson. Найдите идеи для кухни, спальни или детской, которые сделают вашу жизнь комфортнее и красивее.
           </p>
-          <div className="flex items-start">
+          <div className="flex">
             <a href="#catalogs" className="btn-red">
               Перейти к коллекции
             </a>

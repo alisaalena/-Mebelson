@@ -26,9 +26,9 @@ const App: React.FC = () => {
   useEffect(() => {
     const bitrixData = window.mebelsonData || {
       catalogs: [
-        { id: '1', year: '2025', title: 'Коллекция: Корпусная мебель 2025', label: 'MEBELSON 2025', size: '24 Mb', color: 'red', pdfUrl: '/upload/cat_2025.pdf' },
-        { id: '2', year: '2024', title: 'Идеи для Вашей КУХНИ', label: 'KITCHEN 2024', size: '12 Mb', color: 'dark', pdfUrl: '/upload/kitchen_2024.pdf' },
-        { id: '3', year: '2024', title: 'Уютные СПАЛЬНИ', label: 'BEDROOM 2024', size: '8.5 Mb', color: 'gray-dark', pdfUrl: '/upload/bedroom_2024.pdf' },
+        { id: '1', year: '2025', title: 'Каталог: Корпусная мебель 2025', label: 'MEBELSON 2025', size: 'Большой PDF', color: 'red', pdfUrl: '/upload/cat_2025.pdf' },
+        { id: '2', year: '2024', title: 'Каталог КУХНИ', label: 'KITCHEN 2024', size: '12 Mb', color: 'dark', pdfUrl: '/upload/kitchen_2024.pdf' },
+        { id: '3', year: '2024', title: 'Каталог СПАЛЬНИ', label: 'BEDROOM 2024', size: '8.5 Mb', color: 'gray-dark', pdfUrl: '/upload/bedroom_2024.pdf' },
         { id: '4', year: '2023', title: 'Гостиные и Прихожие', label: 'LIVING ROOM 23', size: '15 Mb', color: 'gray', pdfUrl: '/upload/living_2023.pdf' },
       ],
       leaflets: [
@@ -57,18 +57,24 @@ const App: React.FC = () => {
       <Navbar />
       <Hero />
       
-      <main className="container">
-        <div className="breadcrumb">
-          Главная <span>/</span> Электронные каталоги
+      <div className="breadcrumb-wrapper" style={{ background: 'var(--me-gray-light)' }}>
+        <div className="container">
+          <div className="breadcrumb">
+            Главная <span>/</span> Электронные каталоги
+          </div>
         </div>
-        
-        <section id="catalogs" className="section-padding">
+      </div>
+      
+      <section id="catalogs" className="section-catalogs">
+        <div className="container">
           <CatalogExplorer 
             catalogs={data.catalogs} 
             onOpenCatalog={openCatalog} 
           />
-        </section>
-        
+        </div>
+      </section>
+      
+      <main className="container">
         <section id="leaflets" className="section-padding border-t border-gray-100">
           <LeafletsSection 
             leaflets={data.leaflets} 
