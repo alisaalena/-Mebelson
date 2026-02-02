@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -25,7 +24,6 @@ const App: React.FC = () => {
   const [data, setData] = useState<MebelsonData>({ catalogs: [], leaflets: [] });
 
   useEffect(() => {
-    // Инициализация данных из глобальной переменной Bitrix или заглушки
     const bitrixData = window.mebelsonData || {
       catalogs: [
         { id: '1', year: '2025', title: 'Коллекция: Корпусная мебель 2025', label: 'MEBELSON 2025', size: '24 Mb', color: 'red', pdfUrl: '/upload/cat_2025.pdf' },
@@ -60,7 +58,9 @@ const App: React.FC = () => {
       <Hero />
       
       <main className="container">
-        <div className="breadcrumb">Главная / Гид по стилю</div>
+        <div className="breadcrumb">
+          Главная <span>/</span> Электронные каталоги
+        </div>
         
         <section id="catalogs" className="section-padding">
           <CatalogExplorer 
@@ -81,13 +81,12 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      {/* Модальное окно DearFlip */}
       {isFlipbookOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(8px)', padding: '20px' }}>
-          <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl relative flex flex-col" style={{ height: '90vh' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)', padding: '20px' }}>
+          <div className="w-full max-w-6xl bg-white rounded-lg shadow-2xl relative flex flex-col" style={{ height: '85vh' }}>
             <div className="flex items-center justify-between p-4 border-b">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">3D Просмотр каталога</span>
-              <button onClick={closeCatalog} className="btn-red" style={{ width: 'auto', height: '32px', padding: '0 12px', fontSize: '11px' }}>
+              <span className="text-xs font-bold text-gray-400 uppercase">Интерактивный просмотр</span>
+              <button onClick={closeCatalog} style={{ background: 'var(--me-red)', color: '#fff', border: 'none', padding: '5px 15px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold' }}>
                 Закрыть
               </button>
             </div>
