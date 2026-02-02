@@ -50,7 +50,7 @@
     padding: 8px 18px;
     border-radius: 4px;
     font-weight: 800;
-    font-size: 21px; /* Компактный логотип */
+    font-size: 21px;
     letter-spacing: -0.01em;
     text-decoration: none;
     margin-right: auto;
@@ -59,7 +59,7 @@
 .mebelson-page .nav-group {
     display: flex;
     align-items: center;
-    gap: 40px; /* Пробелы между ними */
+    gap: 40px;
 }
 
 .mebelson-page .nav-link {
@@ -93,7 +93,7 @@
 }
 
 .mebelson-page .me-hero-title {
-    font-size: 64px; /* Увеличенный заголовок */
+    font-size: 64px;
     font-weight: 800;
     line-height: 1.05;
     margin-bottom: 25px;
@@ -112,7 +112,6 @@
     line-height: 1.6;
 }
 
-/* Кнопка "Перейти к коллекции" - не на всю ширину */
 .mebelson-page .btn-red {
     background: var(--me-red);
     color: #ffffff;
@@ -151,7 +150,6 @@
     margin: 0;
 }
 
-/* Табы-переключатели */
 .mebelson-page .tabs-container {
     display: flex;
     background: #fff;
@@ -176,7 +174,6 @@
     color: var(--me-red);
 }
 
-/* Карточки каталогов и выравнивание кнопок */
 .mebelson-page .catalog-grid {
     display: grid;
     gap: 24px;
@@ -201,7 +198,7 @@
 }
 
 .mebelson-page .cat-card-top {
-    height: 380px; /* Фиксированная высота обложки */
+    height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,15 +236,15 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Чтобы кнопки всегда были внизу */
+    justify-content: space-between;
 }
 
 .mebelson-page .cat-title {
-    font-size: 16px; /* Уменьшили для компактности */
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 8px;
     color: #222;
-    height: 48px; /* Фиксированная высота для выравнивания */
+    height: 48px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -264,7 +261,7 @@
 }
 
 .mebelson-page .cat-card .btn-red {
-    width: 100%; /* Внутри карточки на всю ширину карточки */
+    width: 100%;
     height: 48px;
     font-size: 14px;
 }
@@ -276,6 +273,81 @@
     color: #999;
     margin-top: 15px;
     text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- ТРЕТИЙ ЭКРАН: ЛИСТОВКИ (Коротко о главном) --- */
+.mebelson-page .leaflet-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
+}
+
+@media (max-width: 1023px) { .mebelson-page .leaflet-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 639px) { .mebelson-page .leaflet-grid { grid-template-columns: 1fr; } }
+
+.mebelson-page .leaflet-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eeeeee;
+    transition: all 0.3s;
+}
+
+.mebelson-page .leaflet-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-color: #ddd;
+}
+
+.mebelson-page .leaflet-card-top {
+    aspect-ratio: 1.41 / 1; /* Горизонтальный A4 */
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mebelson-page .leaflet-card-label {
+    color: #ccc;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.mebelson-page .leaflet-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.mebelson-page .leaflet-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #222;
+}
+
+.mebelson-page .leaflet-info {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+}
+
+.mebelson-page .leaflet-card .btn-red {
+    width: 100%;
+    height: 44px;
+    font-size: 13px;
 }
 
 /* Хлебные крошки */
@@ -283,4 +355,8 @@
     font-size: 13px;
     color: #9CA3AF;
     padding: 25px 0;
+}
+
+.mebelson-page .section-padding {
+    padding: 80px 0;
 }
